@@ -136,7 +136,7 @@ print("setColorToAll: %s" % lpack.setColorToAll(0, 0, 0))
 
 # START PLAYING BACKGROUND MUSIC
 pygame.mixer.init()
-pygame.mixer.music.load("tiki_room_audio_short.mp3")
+pygame.mixer.music.load("two_track_stereo_Jose.mp3")
 pygame.mixer.music.play()
 
 # ind = 1
