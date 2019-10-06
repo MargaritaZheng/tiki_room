@@ -20,14 +20,6 @@ print("getAPIStatus: %s" % lpack.getAPIStatus())
 
 # INITIALIZE LED POSITIONS FOR EACH BIRD
 
-# Jose = [8]
-# Michael = [3]
-# Pierre = [1]
-# Fritz = [10]
-# sides = [2,9]
-# top = [4,5,6]
-# flowers = [7]
-
 # create alltogether function
 def alltogether(time_diff):
     lpack.setSmooth(10)	# Tiny Cylone
@@ -72,68 +64,65 @@ def alltogether(time_diff):
 
 def swing(time_df):
     lpack.setColorToAll(0,0,0)
-    right = [1, 2, 3]
-    top = [4, 5, 6, 7, 4, 5, 6, 7, 4, 5, 6, 7]
-    left = [8, 9, 10]
     lpack.setSmooth(45)
 
-    t_end = time.time() + time_diff - 0.45
+    t_end = time.time() + time_df - 0.45
     while time.time() < t_end:
         a = random.randint(0,255)
         b = random.randint(0,255)
 
-        for i in range (1, 10):
-            lpack.setColor(right[1], a, b, 0)
-            lpack.setColor(left[1], a, b, 0)
-            time.sleep(0.2)
-            lpack.setColorToAll(0, 0, 0)
+        lpack.setColor(1, a, b, 0)
+        lpack.setColor(10, a, b, 0)
+        time.sleep(0.25)
+        lpack.setColorToAll(0, 0, 0)
 
-            lpack.setColor(top, a, b, 0)
-            time.sleep(0.2)
-            lpack.setColorToAll(0, 0, 0)
+        lpack.setColor(4, a, b, 0)
+        lpack.setColor(5, a, b, 0)
+        lpack.setColor(6, a, b, 0)
+        lpack.setColor(7, a, b, 0)
+        time.sleep(0.25)
+        lpack.setColorToAll(0, 0, 0)
 
-def finale(time_df):
-    right = [1, 2, 3]
-    top = [4, 5, 6, 7]
-    left = [8, 9, 10]
+def finale():
 
-    lag = time_df/4
+    a = random.randint(0,255)
+    b = random.randint(0,255)
 
     lpack.setColorToAll(0,0,0)
     lpack.setColor(1, a, b, 0)
     lpack.setColor(10, a, b, 0)
-    time.sleep(lag)
+    time.sleep(0.25)
     lpack.setColorToAll(0, 0, 0)
-    lpack.setColor(2, a, b, 0)
-    lpack.setColor(9, a, b, 0)
-    time.sleep(lag)
+    lpack.setColor(2, b, a, 0)
+    lpack.setColor(9, b, a, 0)
+    time.sleep(0.32)
     lpack.setColorToAll(0, 0, 0)
-    lpack.setColor(3, a, b, 0)
-    lpack.setColor(8, a, b, 0)
-    time.sleep(lag)
-    lpack.setColor(5, a, b, 0)
-    lpack.setColor(6, a, b, 0)
-    time.sleep(lag)
+    lpack.setColor(3, 0, a, b)
+    lpack.setColor(8, 0, a, b)
+    time.sleep(0.31)
+    lpack.setColor(5, 0, b, a)
+    lpack.setColor(6, 0, b, a)
+    time.sleep(0.93)
     lpack.setColorToAll(0, 0, 0)
 
 def whistle(time_df):
     t_end = time.time() + time_df - 0.2
     while time.time() < t_end:
-    	lpack.setSmooth(10)	# 4 basic flashes
+    	lpack.setSmooth(50)	# 4 basic flashes
     	lpack.setColorToAll(0,0,0)
     	time.sleep(0.1)
     	for k in range(0,10):
-    		lpack.setColorToAll(255,255,255)
-    		time.sleep(0.1);
+    		lpack.setColorToAll(150,150,150)
+    		time.sleep(0.15);
     		lpack.setColorToAll(0,0,0)
-    		time.sleep(0.1);
+    		time.sleep(0.15);
     	lpack.setColorToAll(0,0,0)
 
 def sing(bird, time_df):
     lpack.setColor(bird['led'], bird['r'], bird['g'], bird['b'])
     time.sleep(time_df)
     lpack.setColorToAll(0, 0, 0)
-    time.sleep(0.2)
+    time.sleep(0.1)
 
 # create dictionaries for each bird
 
@@ -141,7 +130,6 @@ Jose = {'led': 8, 'r':255, 'g':0, 'b':0}
 Michael = {'led': 3, 'r':0, 'g':255, 'b':0}
 Pierre = {'led': 1, 'r':0, 'g':0, 'b':255}
 Fritz = {'led': 10, 'r':255, 'g':255, 'b':0}
-# purple = {r:138, g:43, b:226}
 
 # BEGIN SONG SEQUENCE
 print("setColorToAll: %s" % lpack.setColorToAll(0, 0, 0))
@@ -150,17 +138,20 @@ print("setColorToAll: %s" % lpack.setColorToAll(0, 0, 0))
 pygame.mixer.init()
 pygame.mixer.music.load("tiki_room_audio_short.mp3")
 pygame.mixer.music.play()
-music_start = time.time()
 
+# ind = 1
+# while ind == 1:
+#     pos = pygame.mixer.music.get_pos()
+#     if pos > 1100:
+#         ind = 2
 time.sleep(1.4)
-# if time.time() == music_start + 0.35:
 sing(Jose, 14.2)
 sing(Michael, 8.5)
 sing(Pierre, 10.2)
 sing(Fritz, 14.1)
-whistle(4)
+sing(Michael, 4)
 
-alltogether(3.2)
+whistle(3.2)
 
 sing(Jose, 3.3)
 
@@ -171,23 +162,23 @@ sing(Pierre, 2.1)
 
 alltogether(2.8)
 
-sing(Jose, 9.8)
+sing(Jose, 9.8) # Welcome to our tropical hideaway
 
-alltogether(6)
+alltogether(6) # ALLTOGETHER!
 
 sing(Jose, 1.3)
 sing(Pierre, 1.3)
 
-alltogether(3.1)
+alltogether(2.8)
 
-sing(Michael, 4)
+sing(Michael, 4) # I sing so beautifully, I should sing solo
 sing(Jose, 2.4)
 sing(Pierre, 4.8)
 sing(Fritz, 8.6)
 sing(Jose, 6.5)
-sing(Pierre, 2.8)
+sing(Pierre, 2.7) # because of their claws?
 sing(Jose, 1.1)
-sing(Pierre, 7.1)
+sing(Pierre, 7)
 
 swing(5)
 
@@ -207,22 +198,25 @@ sing(Pierre, 1.4)
 
 alltogether(2.7)
 
-sing(Jose, 10.7)
+sing(Jose, 10.7) # All my magnificent produc-ti-on is yet to come
 
 # recalculate the timings
 alltogether(5.1)
+sing(Michael, 0.6)
+alltogether(4.7)
 sing(Michael, 1)
-alltogether(5)
-sing(Michael, 1)
-alltogether(13.7)
+alltogether(9.8) # something is running for too long down here
 
-finale(1.6)
+finale()
 
+sing(Michael, 2.8)
 sing(Jose, 1.5)
 sing(Pierre, 3.9)
-sing(Jose, 3)
+sing(Jose, 4)
 
 print("setColorToAll: %s" % lpack.setColorToAll(0, 0, 0))
 print("turnOff: %s" % lpack.turnOff());
 
 lpack.disconnect()
+    # else:
+    #     continue

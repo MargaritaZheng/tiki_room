@@ -1,11 +1,11 @@
 <?xml version="1.0" standalone="no" ?>
 <!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
-<project xmlns="http://audacity.sourceforge.net/xml/" projname="Walt Disney&apos;s Enchanted Tiki Room - Attraction Audio_data" version="1.3.0" audacityversion="2.3.2" sel0="217.0686066637" sel1="217.0686066637" vpos="0" h="135.3431091442" zoom="175.8936982498" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="Walt Disney&apos;s Enchanted Tiki Room - Attraction Audio_data" version="1.3.0" audacityversion="2.3.2" sel0="213.2196910587" sel1="213.2196910587" vpos="0" h="211.2298528583" zoom="175.8936982498" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
 	<tags>
-		<tag name="compatible_brands" value="iso6mp41"/>
-		<tag name="Software" value="Lavf57.56.101"/>
-		<tag name="minor_version" value="0"/>
 		<tag name="major_brand" value="dash"/>
+		<tag name="minor_version" value="0"/>
+		<tag name="Software" value="Lavf57.56.101"/>
+		<tag name="compatible_brands" value="iso6mp41"/>
 	</tags>
 	<wavetrack name="Walt Disney&apos;s Enchanted Tiki Room - Attraction Audio" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
 		<waveclip offset="0.00000000" colorindex="0">
@@ -259,7 +259,7 @@
 			<envelope numpoints="0"/>
 		</waveclip>
 	</wavetrack>
-	<labeltrack name="Label Track" numlabels="43" height="73" minimized="0" isSelected="0">
+	<labeltrack name="Label Track" numlabels="47" height="73" minimized="0" isSelected="1">
 		<label t="14.5769841270" t1="14.5769841270" title="Michael"/>
 		<label t="23.0139001015" t1="23.0139001015" title="PIerre"/>
 		<label t="33.2018716879" t1="33.2018716879" title="Fritz"/>
@@ -297,8 +297,12 @@
 		<label t="172.3938964370" t1="172.3938964370" title="tikitikitiki"/>
 		<label t="175.0545943737" t1="175.0545943737" title="Jose"/>
 		<label t="185.7712943962" t1="185.7712943962" title="tikitikitiki"/>
-		<label t="190.8766506934" t1="190.8766506934" title="Michael"/>
-		<label t="207.0796188973" t1="207.0796188973" title="background"/>
+		<label t="190.8766506934" t1="190.8766506934" title="Michael (a little softer)"/>
+		<label t="191.5361399256" t1="191.5361399256" title="SOFTER"/>
+		<label t="196.2662695907" t1="196.2662695907" title="Michael (a little louder)"/>
+		<label t="197.2839296989" t1="197.2839296989" title="LOUDER"/>
+		<label t="207.0796188973" t1="207.0796188973" title="FINALE"/>
+		<label t="208.5066171496" t1="208.5066171496" title="silence"/>
 		<label t="208.8591027737" t1="208.8591027737" title="Michael"/>
 		<label t="211.7415255384" t1="211.7415255384" title="Jose"/>
 		<label t="213.2196910587" t1="213.2196910587" title="Pierre"/>
