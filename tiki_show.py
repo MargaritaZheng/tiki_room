@@ -24,41 +24,40 @@ print("getAPIStatus: %s" % lpack.getAPIStatus())
 def alltogether(time_diff):
     lpack.setSmooth(10)	# Tiny Cylone
     lpack.setColorToAll(0,0,0)
-    top = [3, 4, 5, 6]
-    bottom = [1, 10, 9, 8]
-    left = [1, 2, 3]
-    right = [6, 7, 8]
-    on = [255, 0, 0]
-    off = [0, 0, 0]
+    left = [10, 9, 8, 10]
+    top = [7,6,5,4,7]
+    right = [3,2,1,3]
+
     lpack.setSmooth(45)
 
-    lpack.setColor(top[0], on[0], on[1], on[2])
-    lpack.setColor(bottom[0], on[0], on[1], on[2])
-    for k in range (0, 3) :
-        lpack.setColor(left[k], on[0], on[1], on[2])
+    a = random.randint(0,255)
+    b = random.randint(0,255)
+    c = random.randint(0,255)
 
-    t_end = time.time() + time_diff - 0.45
+    t_end = time.time() + time_diff - 0.75
     while time.time() < t_end:
-        for i in range (1, 4) :
-            lpack.setColor(top[i], random.randint(0,255), random.randint(0,255), random.randint(0,255))
-            lpack.setColor(bottom[i], random.randint(0,255), random.randint(0,255), random.randint(0,255))
+        for i in range(1, 3) :
+            lpack.setColor(left[i], c, a, b)
+            lpack.setColor(right[i], a, b, c)
             if i == 3 :
                 for n in range (0, 3) :
-                    lpack.setColor(right[n], on[0], on[1], on[2])
+                    lpack.setColor(right[n], a, 0, 0)
             if i >= 1 :
-                lpack.setColor(top[i-1], off[0], random.randint(0,255), off[2])
-                lpack.setColor(bottom[i-1], random.randint(0,255), off[1], off[2])
-                lpack.setColor(left[1], off[0], off[1], random.randint(0,255))
+                lpack.setColor(top[i-1], 0, c, 0)
+                lpack.setColor(top[i-1], b, 0, 0)
+                lpack.setColor(left[1], 0, 0, c)
             time.sleep(0.2)
         for m in [2,1,0] :
-            lpack.setColor(top[m], random.randint(0,255), random.randint(0,255), random.randint(0,255))
-            lpack.setColor(bottom[m], random.randint(0,255), random.randint(0,255), random.randint(0,255))
+            lpack.setColor(left[m], a, b, c)
+            lpack.setColor(right[m], c, a, b)
             if m == 2 :
-                lpack.setColor(right[1], off[0], off[1], off[2])
+                lpack.setColor(right[1], c, a, 0)
+                # lpack.setColor(left[0], c, a, 0)
             elif m == 0 :
-                lpack.setColor(left[1], on[0], random.randint(0,255), random.randint(0,255))
-            lpack.setColor(top[m+1], off[0], off[1], off[2])
-            lpack.setColor(bottom[m+1], off[0], off[1], off[2])
+                lpack.setColor(left[1], 0, a, c)
+
+            lpack.setColor(left[m+1], b, c, 0)
+            lpack.setColor(right[m+1], a, 0, b)
             time.sleep(0.2)
     lpack.setColorToAll(0, 0, 0)
 
@@ -66,27 +65,27 @@ def swing(time_df):
     lpack.setColorToAll(0,0,0)
     lpack.setSmooth(45)
 
-    t_end = time.time() + time_df - 0.45
+    t_end = time.time() + time_df - 0.65
     while time.time() < t_end:
         a = random.randint(0,255)
         b = random.randint(0,255)
 
         lpack.setColor(1, a, b, 0)
         lpack.setColor(10, a, b, 0)
-        time.sleep(0.25)
+        time.sleep(0.3)
         lpack.setColorToAll(0, 0, 0)
 
         lpack.setColor(4, a, b, 0)
         lpack.setColor(5, a, b, 0)
         lpack.setColor(6, a, b, 0)
         lpack.setColor(7, a, b, 0)
-        time.sleep(0.25)
+        time.sleep(0.3)
         lpack.setColorToAll(0, 0, 0)
 
 def finale():
 
-    a = random.randint(0,255)
-    b = random.randint(0,255)
+    a = 255
+    b = 200
 
     lpack.setColorToAll(0,0,0)
     lpack.setColor(1, a, b, 0)
@@ -122,11 +121,11 @@ def sing(bird, time_df):
     lpack.setColor(bird['led'], bird['r'], bird['g'], bird['b'])
     time.sleep(time_df)
     lpack.setColorToAll(0, 0, 0)
-    time.sleep(0.1)
+    # time.sleep(0.1)
 
 # create dictionaries for each bird
 
-Jose = {'led': 8, 'r':255, 'g':0, 'b':0}
+Jose = {'led': 8, 'r':255, 'g':255, 'b':255}
 Michael = {'led': 3, 'r':0, 'g':255, 'b':0}
 Pierre = {'led': 1, 'r':0, 'g':0, 'b':255}
 Fritz = {'led': 10, 'r':255, 'g':255, 'b':0}
@@ -136,20 +135,21 @@ print("setColorToAll: %s" % lpack.setColorToAll(0, 0, 0))
 
 # START PLAYING BACKGROUND MUSIC
 pygame.mixer.init()
-pygame.mixer.music.load("two_track_stereo_Jose.mp3")
+pygame.mixer.music.load("two_track_stereo_Jose_v2.mp3")
+# pygame.mixer.music.load("tiki_room_audio_short.mp3")
 pygame.mixer.music.play()
 
 # ind = 1
 # while ind == 1:
 #     pos = pygame.mixer.music.get_pos()
-#     if pos > 1100:
+#     if pos > 1000:
 #         ind = 2
-time.sleep(1.4)
+time.sleep(.5)
 sing(Jose, 14.2)
 sing(Michael, 8.5)
 sing(Pierre, 10.2)
-sing(Fritz, 14.1)
-sing(Michael, 4)
+sing(Fritz, 13.8)
+sing(Michael, 3.4)
 
 whistle(3.2)
 
